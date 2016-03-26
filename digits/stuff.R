@@ -7,7 +7,7 @@ set.seed(0)
 
 numTrain <- 10000
 numTrees <- 25
-
+ 
 train <- read_csv("/home/mikhail/Desktop/GitProjects/KaggleCodes/digits/input/train.csv") 
 test <- read_csv("/home/mikhail/Desktop/GitProjects/KaggleCodes/digits/input/test.csv") 
 
@@ -15,7 +15,7 @@ rows <- sample(1:nrow(train), numTrain)
 labels <- as.factor(train[rows,1])
 train <- train[rows,-1]
 
-flds <- createFolds(y, k = 10, list = TRUE, returnTrain = FALSE)
+flds <- createFolds(train$label, k = 10, list = TRUE, returnTrain = FALSE) 
 names(flds)[1] <- "train"
 
 localH2O = h2o.init(max_mem_size = '3g', # use 6GB of RAM of *GB available
